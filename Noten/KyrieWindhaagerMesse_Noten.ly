@@ -1,4 +1,4 @@
-\version "2.18.2"
+\version "2.22.0"
 
 \include "../Noten/dynamicparams.ly"
 \include "../Noten/formatangaben.ly"
@@ -9,7 +9,7 @@
 \include "../Noten/mydrums2.ly"
 \include "../Noten/drumdefinitions.ly"
 
-tempTranspose = #(define-music-function (parser location music)
+tempTranspose = #(define-music-function (music)
                    (ly:music?)
                    (let* ((octave (or (ly:get-option 'octave) -1))
                           (note (or (ly:get-option 'note) 0))
@@ -173,8 +173,8 @@ orgelAltKyrieWindhaagerMesse = \relative g {
   s1*6 | % 7
   <b d>1 s1 | % 9
   e1 s1*3 \mBreak s1 | % 14
-  e4 e4 f4 <c es>4 | % 15
-  <c e>2 <bes d>4 <d f>4 | % 16
+  ees4 ees4 f4 <c es>4 | % 15
+  <c ees>2 <bes d>4 <d f>4 | % 16
   <c e>2 c2 s1*5 | % 22
   e4 ( d4 ) c2 \mBreak s1*2 | % 25
   d1 s1*2 | % 28
@@ -209,7 +209,7 @@ orgelTenorKyrieWindhaagerMesse = \relative c {
   g'2 d2 | % 12
   g2 <ees bes'>2 \mBreak | % 13
   <d bes'>2 <es bes'>2 | % 14
-  <a, a'>1  | % 15
+  <aes, aes'>1  | % 15
   <g g'>1  | % 16
   c2   f2 | % 17
   e2   f2 | % 18
@@ -218,6 +218,7 @@ orgelTenorKyrieWindhaagerMesse = \relative c {
   \voiceOne a'2  a2 | \barNumberCheck #20
   \oneVoice <d, g>2 <c g'>2 | % 21
   c2 e2 | % 22
+  \voiceOne
   gis2 a2 \mBreak | % 23
   e1 | % 24
   a,1 | % 25
@@ -258,7 +259,7 @@ metronomZeileKyrieWindhaagerMesse = \drummode {
 }
 \include "defKyrieWindhaagerMesse.ly"
 
-%{Arbeitspartitur
+%***Arbeitspartitur
 #(set-global-staff-size 17)
 \book {
   \bookOutputName "KyrieWindhaagerMesse-Arbeitspartitur"
@@ -296,4 +297,4 @@ metronomZeileKyrieWindhaagerMesse = \drummode {
     \scoreKyrieWindhaagerMesse
   }
 }
-Arbeitspartitur%}
+%Arbeitspartitur***

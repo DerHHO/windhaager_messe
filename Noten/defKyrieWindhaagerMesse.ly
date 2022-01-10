@@ -1,3 +1,4 @@
+\version "2.22.0"
 
 chorpartiturKyrieWindhaagerMesse = {
   \new ChoirStaff <<
@@ -96,22 +97,22 @@ scoreKyrieWindhaagerMesse = {
       \new Voice = "vHrn1" {
         \voiceOne
         \tag #'transponierendepartitur {
-          \clef "treble"
+          \clef "G_8"
           \transpose c c \hornIKyrieWindhaagerMesse
         }
         \tag #'klingendepartitur {
-          \clef "treble"
+          \clef "G_8"
           \hornIKyrieWindhaagerMesse
         }
       }
       \new Voice = "vHrn2" {
         \voiceTwo
         \tag #'transponierendepartitur {
-          \clef "treble"
+          \clef "G_8"
           \transpose c c \hornIIKyrieWindhaagerMesse
         }
         \tag #'klingendepartitur {
-          \clef "treble"
+          \clef "G_8"
           \hornIIKyrieWindhaagerMesse
         }
       }

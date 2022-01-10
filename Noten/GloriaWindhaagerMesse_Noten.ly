@@ -1,4 +1,4 @@
-\version "2.18.2"
+\version "2.22.0"
 
 \include "../Noten/dynamicparams.ly"
 \include "../Noten/formatangaben.ly"
@@ -9,7 +9,7 @@
 \include "../Noten/mydrums2.ly"
 \include "../Noten/drumdefinitions.ly"
 
-tempTranspose = #(define-music-function (parser location music)
+tempTranspose = #(define-music-function (music)
                    (ly:music?)
                    (let* ((octave (or (ly:get-option 'octave) -1))
                           (note (or (ly:get-option 'note) 0))
@@ -228,8 +228,10 @@ orgelSopranGloriaWindhaagerMesse = \relative c'' {
   <c e a>2 r2 | % 53
   <f a>2 ( <c g'>4 <a f'>4 ) | % 54
   g'2 a4 bes4 \mPageBreak | % 55
-  bes4. ( a8 ) a2 | % 56
-  <f d'>2 <f c'>2 | % 57
+  \voiceOne
+	bes4. ( a8 ) a2 | % 56
+  \oneVoice
+	<f d'>2 <f c'>2 | % 57
   <g bes>2 <f a>2 | % 58
   g2 g4 f4 | % 59
   f2 e2 | 

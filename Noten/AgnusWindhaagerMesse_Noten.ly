@@ -1,4 +1,4 @@
-\version "2.18.2"
+\version "2.22.0"
 
 \include "../Noten/dynamicparams.ly"
 \include "../Noten/formatangaben.ly"
@@ -9,7 +9,7 @@
 \include "../Noten/mydrums2.ly"
 \include "../Noten/drumdefinitions.ly"
 
-tempTranspose = #(define-music-function (parser location music)
+tempTranspose = #(define-music-function (music)
                    (ly:music?)
                    (let* ((octave (or (ly:get-option 'octave) -1))
                           (note (or (ly:get-option 'note) 0))
@@ -197,14 +197,15 @@ orgelAltAgnusWindhaagerMesse = \relative g' {
   c2. s1*3 | % 213
   e2. | % 214
   e2. \mBreak | % 215
-  e4 e4 s1 | % 217
+  e4 e4 r4 |
+	s2. |
   e2. | % 218
   e2 e4 | % 219
   e2. s4*9 \mPageBreak | % 223
   e2 f4 | % 224
   <cis e>2. | % 225
   d4 cis4 d4 | % 226
-  g4 a2 s4*15 \mBreak 
+  g4 a2
   
 }
 
@@ -230,30 +231,30 @@ orgelTenorAgnusWindhaagerMesse = \relative c {
   b2 c4 \mBreak | % 206
   a4 g2 | % 207
   <c, g'>2. | % 208
-  f,2 -\markup{ \teeny {.} } c'4 | % 209
+  \oneVoice f,2 c'4 | % 209
   d2 c4 | 
   g'2 r4 | % 211
-  c2. | % 212
+  \voiceOne c2. | % 212
   b2. | % 213
   a4 gis4 a4 | % 214
-  b2 -\markup{ \teeny {.} } a4 \mBreak | % 215
+  b2 a4 \mBreak | % 215
   a4 gis4 r4 | % 216
   gis2. | % 217
   a4 b4 c4 | % 218
   gis2. | % 219
-  a2. | 
-  d,4 -\markup{ \teeny {.} } e2 | % 221
+	a2. | 
+  \oneVoice d,4 e2 | % 221
   <a, e'>2 r4 | % 222
   <f' c'>2. \mPageBreak | % 223
-  c'4 bes4 a4 | % 224
+  \voiceOne c'4 bes4 a4 | % 224
   a2. | % 225
   a2. | % 226
-  e'4 -\markup{ \teeny {.} } d2 | % 227
+  e'4 d2 | % 227
   d4 c4 b4 | % 228
   d2. | % 229
   c2 f,4 | 
-  g2 r4 | % 231
-  g2. -\markup{ \teeny {.} } \mBreak | % 232
+  \oneVoice g2 r4 | % 231
+  \voiceOne g2. \mBreak | % 232
   f2 e4 | % 233
   g2. | % 234
   g2. | % 235
@@ -270,7 +271,7 @@ orgelBassAgnusWindhaagerMesse = \relative g {
   e2. | % 213
   c4 b4 a4 | % 214
   gis2 a4 \mBreak | % 215
-  e'2 s4 | % 216
+  e'2 r4 | % 216
   e2 d4 | % 217
   c4 b4 a4 | % 218
   e'2 d4 | % 219

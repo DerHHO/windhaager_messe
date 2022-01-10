@@ -1,3 +1,4 @@
+\version "2.22.0"
 
 chorpartiturAgnusWindhaagerMesse = {
   \new ChoirStaff <<
@@ -92,25 +93,25 @@ scoreAgnusWindhaagerMesse = {
 
     }
     <<
-      \new Voice = "vHoerner_C" {
+      \new Voice = "vHrn1" {
         \voiceOne
         \tag #'transponierendepartitur {
-          \clef "treble"
+          \clef "G_8"
           \transpose c c \hornIAgnusWindhaagerMesse
         }
         \tag #'klingendepartitur {
-          \clef "treble"
+          \clef "G_8"
           \hornIAgnusWindhaagerMesse
         }
       }
-      \new Voice = "vHoerner_C" {
+      \new Voice = "vHrn2" {
         \voiceTwo
         \tag #'transponierendepartitur {
-          \clef "treble"
+          \clef "G_8"
           \transpose c c \hornIIAgnusWindhaagerMesse
         }
         \tag #'klingendepartitur {
-          \clef "treble"
+          \clef "G_8"
           \hornIIAgnusWindhaagerMesse
         }
       }

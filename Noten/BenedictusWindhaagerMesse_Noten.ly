@@ -1,4 +1,4 @@
-\version "2.18.2"
+\version "2.22.0"
 
 \include "../Noten/dynamicparams.ly"
 \include "../Noten/formatangaben.ly"
@@ -9,13 +9,13 @@
 \include "../Noten/mydrums2.ly"
 \include "../Noten/drumdefinitions.ly"
 
-tempTranspose = #(define-music-function (parser location music)
+tempTranspose = #(define-music-function (music)
                    (ly:music?)
                    (let* ((octave (or (ly:get-option 'octave) -1))
                           (note (or (ly:get-option 'note) 0))
                           (alteration (or (ly:get-option 'alteration) 0))
                           (to (ly:make-pitch octave note alteration)))
-                     #{ \transpose c c  $music #}))
+                     #{ \transpose d c  $music #}))
 
 
 mBreak = { }
@@ -49,9 +49,9 @@ altNotenBenedictusWindhaagerMesse = \tempTranspose \relative bes' {
   f2 es8 [ d8 ] c8 [ bes8 ] | % 181
   bes'2 as8 [ g8 ] f8 [ es8 ] | % 182
   des'1 | % 183
-  des4( c4) bes8 [ a8 ] g8 [ f8 ] \mBreak | % 184
-  e2( g8 [ f8 ) ] e8 [ f8 ] | % 185
-  e2 r2 | % 186
+  des4( c4) bes8 [ aes8 ] g8 [ f8 ] \mBreak | % 184
+  ees2( g8 [ f8 ) ] ees8 [ f8 ] | % 185
+  ees2 r2 | % 186
   f2( bes4.) d,8 | % 187
   g2 f4 bes4 | % 188
   a4( g4) f8 [ fis8 ] g8 [ es8 ] | % 189
@@ -149,17 +149,17 @@ orgelSopranBenedictusWindhaagerMesse = \relative bes' {
   bes'2 as8 [ g8 f8 es8 ] | 
   f2 ( es8 [ d8 c8 bes8 ) ] | % 181
   s1 |
-  d'1 ~ \mBreak | % 183
-  d4( c4 bes8 [ a8 g8 f8 ) ] | % 184
-  e2 g8 ( [ f8 e8 f8 ) ] | % 185
+  des'1 ~ \mBreak | % 183
+  des4( c4 bes8 [ aes8 g8 f8 ) ] | % 184
+  ees2 g8 ( [ f8 ees8 f8 ) ] | % 185
   ees2 r2 | % 186
   f2 ( bes2 ) | % 187
   g2 f4 bes4 | % 188
   a4 g4 f8 [ fis8 g8 es8 ] | % 189
-  cis2 ( d4 ) f4 \mBreak | 
+  \oneVoice cis2 ( d4 ) f4 \mBreak | 
   g4 f4 f8 [ es8 es8 d8 ] | % 191
   <bes d>4. <a c>8 <a c>4 r4 | % 192
-  f'2 ( bes4 as4 ) | % 193
+  \voiceOne f'2 ( bes4 as4 ) | % 193
   as2 g2 | % 194
   g2 ( c4 bes4 ) | % 195
   <c, bes'>2 <c a'>2 | % 196
@@ -184,8 +184,8 @@ orgelAltBenedictusWindhaagerMesse = \relative ees' {
   \tieDown
   bes'2( as8 g8 f8 es8~ ) | % 182
   \voiceTwo
-  ees4 ( fes4 e4 fes4 \mBreak | % 183
-  e2 ) s2 | % 184
+  ees4 ( fes4 ees4 fes4 \mBreak | % 183
+  ees2 ) s2 | % 184
   bes2 d2 | % 185
   ees2 r2 | % 186
   d1 | % 187
@@ -197,7 +197,8 @@ orgelAltBenedictusWindhaagerMesse = \relative ees' {
   bes2 bes2 | % 197
   c1 \mBreak s1*2 | 
   <as' c>1 | % 201
-  bes1 s1 | % 203
+  bes1 |
+	s2 r2 \bar "|."
 }
 
 orgelRHNotenBenedictusWindhaagerMesse = \tempTranspose \relative c' {
@@ -227,16 +228,16 @@ orgelTenorBenedictusWindhaagerMesse = \relative bes {
   g2 r2 | % 186
   <bes, bes'>1 | % 187
   <bes bes'>1 | % 188
-  c'4 bes4 a4 a,4 | % 189
-  r4 e'4 f4 d4 \mBreak | 
+  \oneVoice c'4 bes4 a4 a,4 | % 189
+  \voiceOne r4 e'4 f4 d4 \mBreak | 
   a'4 bes4 g4 bes4 | % 191
-  f2 ( f,4 ) r4 | % 192
+  \oneVoice f2 ( f,4 ) r4 | % 192
   d'1 | % 193
   es1 | % 194
   e1 | % 195
   f1 | % 196
   d2 es2 | % 197
-  as4 f4 g4 as4 \mBreak | % 198
+  \voiceOne as4 f4 g4 as4 \mBreak | % 198
   g2 bes2 | % 199
   bes2 g2 | 
   <as, as'>1 | % 201
@@ -263,11 +264,12 @@ orgelBassBenedictusWindhaagerMesse = \relative ees {
   es2 r2 |
   s2*6 | % 189
   bes2. r4 \mBreak | 
-  e4 d4 e4 e4 s1*6 | % 197
+  ees4 d4 ees4 ees4 s1*6 | % 197
   as,1 \mBreak | % 198
   bes1 | % 199
   es2 g,2 s1*2 | % 202
-  es2 s2 | % 203
+  es2 r2 | % 203
+	\bar "|."
 
 }
 
@@ -284,7 +286,7 @@ metronomZeileBenedictusWindhaagerMesse = \drummode {
 }
 \include "defBenedictusWindhaagerMesse.ly"
 
-%{Arbeitspartitur
+%***Arbeitspartitur
 #(set-global-staff-size 17)
 \book {
   \bookOutputName "BenedictusWindhaagerMesse-Arbeitspartitur"
@@ -322,4 +324,4 @@ metronomZeileBenedictusWindhaagerMesse = \drummode {
     \scoreBenedictusWindhaagerMesse
   }
 }
-Arbeitspartitur%}
+%Arbeitspartitur***
